@@ -1,0 +1,88 @@
+======================================================================
+TIER 1: CCS_5Min_2024  (5-minute intervals, per-direction bins)
+======================================================================
+
+  File: GDOT_CCS-000000010183-data-1.csv
+  COSIT (from filename): 000000010183
+  Columns (47): ['Start Time', 'End Time', 'Coverage %', 'Direction', 'Count', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13', 'F14', 'F15', '<10 mph', '10-20 mph', '20-30 mph', '30-40 mph', '40-50 mph', '50-60 mph', '60-70 mph', '70-80 mph', '>80 mph', '<7 ft', '7-22 ft', '22-48 ft', '>48 ft', '<6000 lb', '6000-10000 lb', '10000-14000 lb', '14000-16000 lb', '16000-19500 lb', '19500-26000 lb', '26000-33000 lb', '33000-40000 lb', '40000-50000 lb', '50000-60000 lb', '60000-80000 lb', '80000-100000 lb', '100000-130000 lb', '>130000 lb']
+  Dtypes: {'Start Time': dtype('O'), 'End Time': dtype('O'), 'Coverage %': dtype('int64'), 'Direction': dtype('O'), 'Count': dtype('int64'), 'F1': dtype('int64'), 'F2': dtype('int64'), 'F3': dtype('int64'), 'F4': dtype('int64'), 'F5': dtype('int64'), 'F6': dtype('int64'), 'F7': dtype('int64'), 'F8': dtype('int64'), 'F9': dtype('int64'), 'F10': dtype('int64'), 'F11': dtype('int64'), 'F12': dtype('int64'), 'F13': dtype('int64'), 'F14': dtype('int64'), 'F15': dtype('int64'), '<10 mph': dtype('int64'), '10-20 mph': dtype('int64'), '20-30 mph': dtype('int64'), '30-40 mph': dtype('int64'), '40-50 mph': dtype('int64'), '50-60 mph': dtype('int64'), '60-70 mph': dtype('int64'), '70-80 mph': dtype('int64'), '>80 mph': dtype('int64'), '<7 ft': dtype('int64'), '7-22 ft': dtype('int64'), '22-48 ft': dtype('int64'), '>48 ft': dtype('int64'), '<6000 lb': dtype('int64'), '6000-10000 lb': dtype('int64'), '10000-14000 lb': dtype('int64'), '14000-16000 lb': dtype('int64'), '16000-19500 lb': dtype('int64'), '19500-26000 lb': dtype('int64'), '26000-33000 lb': dtype('int64'), '33000-40000 lb': dtype('int64'), '40000-50000 lb': dtype('int64'), '50000-60000 lb': dtype('int64'), '60000-80000 lb': dtype('int64'), '80000-100000 lb': dtype('int64'), '100000-130000 lb': dtype('int64'), '>130000 lb': dtype('int64')}
+  Time column: 'Start Time'  Sample value: 2024-01-01 00:00:00
+  Station ID: embedded in filename as numeric COSIT (12-digit zero-padded)
+
+  File: GDOT_CCS-000000010185-data-1.csv
+  COSIT (from filename): 000000010185
+  Columns (45): ['Start Time', 'End Time', 'Coverage %', 'Direction', 'Count', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13', 'F14', 'F15', '<10 mph', '10-20 mph', '20-30 mph', '30-40 mph', '40-50 mph', '50-60 mph', '>60 mph', '<7 ft', '7-22 ft', '22-48 ft', '>48 ft', '<6000 lb', '6000-10000 lb', '10000-14000 lb', '14000-16000 lb', '16000-19500 lb', '19500-26000 lb', '26000-33000 lb', '33000-40000 lb', '40000-50000 lb', '50000-60000 lb', '60000-80000 lb', '80000-100000 lb', '100000-130000 lb', '>130000 lb']
+  Dtypes: {'Start Time': dtype('O'), 'End Time': dtype('O'), 'Coverage %': dtype('int64'), 'Direction': dtype('O'), 'Count': dtype('int64'), 'F1': dtype('int64'), 'F2': dtype('int64'), 'F3': dtype('int64'), 'F4': dtype('int64'), 'F5': dtype('int64'), 'F6': dtype('int64'), 'F7': dtype('int64'), 'F8': dtype('int64'), 'F9': dtype('int64'), 'F10': dtype('int64'), 'F11': dtype('int64'), 'F12': dtype('int64'), 'F13': dtype('int64'), 'F14': dtype('int64'), 'F15': dtype('int64'), '<10 mph': dtype('int64'), '10-20 mph': dtype('int64'), '20-30 mph': dtype('int64'), '30-40 mph': dtype('int64'), '40-50 mph': dtype('int64'), '50-60 mph': dtype('int64'), '>60 mph': dtype('int64'), '<7 ft': dtype('int64'), '7-22 ft': dtype('int64'), '22-48 ft': dtype('int64'), '>48 ft': dtype('int64'), '<6000 lb': dtype('int64'), '6000-10000 lb': dtype('int64'), '10000-14000 lb': dtype('int64'), '14000-16000 lb': dtype('int64'), '16000-19500 lb': dtype('int64'), '19500-26000 lb': dtype('int64'), '26000-33000 lb': dtype('int64'), '33000-40000 lb': dtype('int64'), '40000-50000 lb': dtype('int64'), '50000-60000 lb': dtype('int64'), '60000-80000 lb': dtype('int64'), '80000-100000 lb': dtype('int64'), '100000-130000 lb': dtype('int64'), '>130000 lb': dtype('int64')}
+  Time column: 'Start Time'  Sample value: 2024-01-01 00:00:00
+  Station ID: embedded in filename as numeric COSIT (12-digit zero-padded)
+
+  File: GDOT_CCS-000000030132-data-1.csv
+  COSIT (from filename): 000000030132
+  Columns (47): ['Start Time', 'End Time', 'Coverage %', 'Direction', 'Count', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13', 'F14', 'F15', '<10 mph', '10-20 mph', '20-30 mph', '30-40 mph', '40-50 mph', '50-60 mph', '60-70 mph', '70-80 mph', '>80 mph', '<7 ft', '7-22 ft', '22-48 ft', '>48 ft', '<6000 lb', '6000-10000 lb', '10000-14000 lb', '14000-16000 lb', '16000-19500 lb', '19500-26000 lb', '26000-33000 lb', '33000-40000 lb', '40000-50000 lb', '50000-60000 lb', '60000-80000 lb', '80000-100000 lb', '100000-130000 lb', '>130000 lb']
+  Dtypes: {'Start Time': dtype('O'), 'End Time': dtype('O'), 'Coverage %': dtype('int64'), 'Direction': dtype('O'), 'Count': dtype('int64'), 'F1': dtype('int64'), 'F2': dtype('int64'), 'F3': dtype('int64'), 'F4': dtype('int64'), 'F5': dtype('int64'), 'F6': dtype('int64'), 'F7': dtype('int64'), 'F8': dtype('int64'), 'F9': dtype('int64'), 'F10': dtype('int64'), 'F11': dtype('int64'), 'F12': dtype('int64'), 'F13': dtype('int64'), 'F14': dtype('int64'), 'F15': dtype('int64'), '<10 mph': dtype('int64'), '10-20 mph': dtype('int64'), '20-30 mph': dtype('int64'), '30-40 mph': dtype('int64'), '40-50 mph': dtype('int64'), '50-60 mph': dtype('int64'), '60-70 mph': dtype('int64'), '70-80 mph': dtype('int64'), '>80 mph': dtype('int64'), '<7 ft': dtype('int64'), '7-22 ft': dtype('int64'), '22-48 ft': dtype('int64'), '>48 ft': dtype('int64'), '<6000 lb': dtype('int64'), '6000-10000 lb': dtype('int64'), '10000-14000 lb': dtype('int64'), '14000-16000 lb': dtype('int64'), '16000-19500 lb': dtype('int64'), '19500-26000 lb': dtype('int64'), '26000-33000 lb': dtype('int64'), '33000-40000 lb': dtype('int64'), '40000-50000 lb': dtype('int64'), '50000-60000 lb': dtype('int64'), '60000-80000 lb': dtype('int64'), '80000-100000 lb': dtype('int64'), '100000-130000 lb': dtype('int64'), '>130000 lb': dtype('int64')}
+  Time column: 'Start Time'  Sample value: 2024-01-01 00:00:00
+  Station ID: embedded in filename as numeric COSIT (12-digit zero-padded)
+
+======================================================================
+TIER 2: GDOT_CCS_2022-2023  (5-minute bins, per-lane)
+======================================================================
+
+  File: 2022-01.csv
+  Columns (20): ['Site', 'Time', 'BinDuration', 'Lane', 'Volume', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13', 'F14', 'F15']
+  Dtypes: {'Site': dtype('O'), 'Time': dtype('O'), 'BinDuration': dtype('int64'), 'Lane': dtype('O'), 'Volume': dtype('int64'), 'F1': dtype('int64'), 'F2': dtype('int64'), 'F3': dtype('int64'), 'F4': dtype('int64'), 'F5': dtype('int64'), 'F6': dtype('int64'), 'F7': dtype('int64'), 'F8': dtype('int64'), 'F9': dtype('int64'), 'F10': dtype('int64'), 'F11': dtype('int64'), 'F12': dtype('int64'), 'F13': dtype('int64'), 'F14': dtype('int64'), 'F15': dtype('int64')}
+  Time column: 'Time'  Sample value: 2022-01-01 00:00:00
+  Station ID: 'Site' column, format 'XXX-XXXX' (e.g. 001-0183), quoted string
+
+======================================================================
+TIER 3: GDoT_UGA_Directional_Export_2017-2022  (hourly bins, directional)
+======================================================================
+
+  File: 2017-08.csv
+  Columns (23): ['Site', 'Time', 'BinDuration', 'Direction', 'Volume', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13', 'F14', 'F15', 'AvgSpeed', 'VolumeQC', 'ClassQC']
+  Dtypes: {'Site': dtype('O'), 'Time': dtype('O'), 'BinDuration': dtype('int64'), 'Direction': dtype('O'), 'Volume': dtype('int64'), 'F1': dtype('int64'), 'F2': dtype('int64'), 'F3': dtype('int64'), 'F4': dtype('int64'), 'F5': dtype('int64'), 'F6': dtype('int64'), 'F7': dtype('int64'), 'F8': dtype('int64'), 'F9': dtype('int64'), 'F10': dtype('int64'), 'F11': dtype('int64'), 'F12': dtype('int64'), 'F13': dtype('int64'), 'F14': dtype('int64'), 'F15': dtype('int64'), 'AvgSpeed': dtype('float64'), 'VolumeQC': dtype('float64'), 'ClassQC': dtype('float64')}
+  Time column: 'Time'  Sample value: 2017-08-01 00:00:00
+  Station ID: 'Site' column, format 'XXX-XXXX', quoted string
+
+======================================================================
+KEY SCHEMA DIFFERENCES SUMMARY
+======================================================================
+
+1. Station ID format:
+   - Tier 1 (2024):      12-digit zero-padded numeric COSIT in filename
+                         e.g., 000000010183  → station_name '001-0183'
+   - Tier 2 (2022-2023): 'Site' column, string format 'XXX-XXXX'
+                         e.g., '001-0183'
+   - Tier 3 (2017-2022): 'Site' column, string format 'XXX-XXXX'
+                         e.g., '001-0183'
+   → Tiers 2 & 3 are directly joinable; Tier 1 requires mapping cosit→station_name.
+
+2. Time column name:
+   - Tier 1: 'Start Time' (and 'End Time'), format YYYY-MM-DD HH:MM:SS (5-min)
+   - Tier 2: 'Time', format YYYY-MM-DD HH:MM:SS (5-min intervals)
+   - Tier 3: 'Time', format YYYY-MM-DD HH:MM:SS (hourly intervals, BinDuration=3600)
+
+3. Temporal resolution (BinDuration):
+   - Tier 1: 5-minute (300 s implied; no BinDuration column in data-1.csv)
+   - Tier 2: 300 s (5-minute); has 'BinDuration' column
+   - Tier 3: 3600 s (hourly);  has 'BinDuration' column
+
+4. Stratification dimension:
+   - Tier 1: 'Direction' column (N/S/E/W)
+   - Tier 2: 'Lane' column (e.g., 'Ln 1 NB') — per-lane data
+   - Tier 3: 'Direction' column (N/S/E/W) — directional aggregates
+
+5. Speed breakdown:
+   - Tier 1: Has speed bin columns (<10 mph, 10-20 mph, … >80 mph)
+             and axle-weight bins (<6000 lb … >130000 lb)
+   - Tier 2: No AvgSpeed or speed bins (classification only: F1-F15)
+   - Tier 3: Has 'AvgSpeed' column; no per-bin speed breakdown
+
+6. QC flags:
+   - Tier 1: 'Coverage %' per interval
+   - Tier 2: No QC columns in raw monthly files (QC in metadata)
+   - Tier 3: 'VolumeQC', 'ClassQC' columns
+
+7. Length/weight data:
+   - Tier 1: Length bins (<7 ft, 7-22 ft, 22-48 ft, >48 ft) and weight bins present
+   - Tier 2: F1-F15 vehicle class counts only
+   - Tier 3: F1-F15 vehicle class counts only

@@ -1,0 +1,263 @@
+% Compile with XeLaTeX (uses macOS system fonts Charter, Avenir Next, Menlo):
+%   xelatex CONTRIBUTIONS.tex
+\RequirePackage{fix-cm}
+\documentclass[10pt]{article}
+\usepackage{fontspec}
+\usepackage[letterpaper,left=0.85in,right=0.85in,top=0.58in,bottom=0.55in]{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+% ---------- fonts ----------
+\setmainfont{Charter}
+\newfontfamily\headfont{Avenir Next}[UprightFont={* Demi Bold},BoldFont={* Bold}]
+\newfontfamily\labelfont{Avenir Next}[UprightFont={* Medium},BoldFont={* Demi Bold}]
+\newfontfamily\metafont{Avenir Next}[UprightFont={* Regular}]
+\setmonofont{Menlo}[Scale=0.84]
+
+% ---------- colors ----------
+\definecolor{navy}{HTML}{1B365D}
+\definecolor{body}{HTML}{1F1F1F}
+\definecolor{slate}{HTML}{4A5868}
+\definecolor{rulegray}{HTML}{B9C3CF}
+\definecolor{tint}{HTML}{EEF2F7}
+
+% ---------- base layout ----------
+\makeatletter
+\renewcommand\normalsize{\@setfontsize\normalsize{10}{12.7}}
+\makeatother
+\normalsize
+\color{body}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1.5em}
+
+% ---------- headings ----------
+\newcommand{\sectionhead}[1]{%
+  \par\vspace{8pt}%
+  {\headfont\fontsize{12.5}{15}\selectfont\color{navy}#1\par}%
+  \vspace{2.5pt}{\color{rulegray}\hrule height 0.6pt}\vspace{4pt}}
+\newcommand{\subhead}[1]{%
+  \par\vspace{4.5pt}%
+  {\labelfont\bfseries\fontsize{10}{12}\selectfont\color{navy}#1\par}\vspace{1.5pt}}
+
+% ---------- lists (one level only) ----------
+\newlength{\itemgap}\setlength{\itemgap}{1.5pt}
+\newenvironment{points}{\begin{list}{\textcolor{navy}{\small\textbullet}}{%
+  \setlength{\leftmargin}{1.05em}\setlength{\labelwidth}{0.7em}%
+  \setlength{\labelsep}{0.4em}\setlength{\itemsep}{\itemgap}%
+  \setlength{\parsep}{0pt}\setlength{\topsep}{1pt}\setlength{\partopsep}{0pt}}}%
+  {\end{list}}
+\newenvironment{numbered}{\begin{list}{\labelfont\color{navy}\arabic{enumi}.}{\usecounter{enumi}%
+  \setlength{\leftmargin}{1.25em}\setlength{\labelwidth}{0.9em}%
+  \setlength{\labelsep}{0.4em}\setlength{\itemsep}{\itemgap}%
+  \setlength{\parsep}{0pt}\setlength{\topsep}{1pt}\setlength{\partopsep}{0pt}}}%
+  {\end{list}}
+
+% ---------- helpers ----------
+\newcommand{\kstar}{\textit{k}\textsuperscript{*}}
+\newcommand{\fp}[1]{{\leavevmode\ttfamily\color{slate}#1}}
+\newcommand{\lbl}[1]{{\leavevmode\labelfont\fontsize{9}{11}\selectfont\color{slate}#1}}
+\newcommand{\num}[1]{\textbf{#1}}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\begin{document}
+
+% =====================================================================
+% HEADER
+% =====================================================================
+{\headfont\fontsize{18}{21}\selectfont\color{navy}Contributions to the GDoT Data-Sufficiency Project\par}
+\vspace{4pt}
+{\metafont\fontsize{9.5}{12}\selectfont\color{slate}%
+{\labelfont\color{body}Kevin Li}\quad\textbar\quad April\,\textendash\,August 2026\hfill
+\href{https://github.com/lzhkevin99-cell/gdot-data-sufficiency-contributions}{github.com/lzhkevin99-cell/gdot-data-sufficiency-contributions}\par}
+\vspace{6pt}{\color{navy}\hrule height 1pt}\vspace{0pt}
+
+% =====================================================================
+% OVERVIEW
+% =====================================================================
+\sectionhead{Project Overview}
+
+When a Georgia DOT continuous count station (CCS) misses days of data, can its monthly average daily
+traffic still be trusted? The project's main paper answers this with a conformal-prediction procedure
+that estimates \kstar, the minimum number of observed days needed. Alongside the paper, I carried out
+two independent workstreams that use its code and data read-only:
+\begin{points}
+  \item \textbf{Exploratory data analysis} of the full 286-station network (2017--2024), run as an
+    AI-agent pipeline that I designed.
+  \item \textbf{A cluster-pooled reference-pool fallback}, after I found that the paper's pipeline
+    silently drops 55\% of eligible stations: a self-directed learning experiment, validated against
+    baselines and not adopted.
+\end{points}
+
+\vspace{5pt}
+\noindent\colorbox{tint}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\vspace{2.5pt}%
+  {\labelfont\bfseries\fontsize{9.5}{12}\selectfont\color{navy}My role\par}\vspace{1pt}
+  AI coding agents executed the code and analysis from specifications I wrote. I contributed the
+  problem framing, the design of the pipeline and experiments, the specifications, and the evaluation
+  of every result. Each number here was checked against the output that produced it.\vspace{2.5pt}}}
+
+% =====================================================================
+% 1. EDA
+% =====================================================================
+\sectionhead{1\quad Exploratory Data Analysis of the CCS Network}
+
+\subhead{Objective}
+Establish what data exists, which parts are reliable, and how stations behave and relate, before any
+modeling.
+
+\subhead{Pipeline design and methodology}
+\begin{points}
+  \item Divided the analysis among \textbf{seven analysis agents and one synthesis agent}, each owning
+    one question type, under a 475-line specification I wrote (\fp{eda/claude.md}).
+  \item Ordered the agents by data dependency. The quality audit runs before any behavioral analysis,
+    so untrustworthy station-months are never treated as signal:
+\end{points}
+\vspace{4pt}
+{\centering\labelfont\fontsize{8.75}{11}\selectfont\color{slate}%
+Inventory \enspace$\rightarrow$\enspace Quality audit \enspace$\rightarrow$\enspace
+[\,Profiles \,\textperiodcentered\, Trends \,\textperiodcentered\, Corridors \,\textperiodcentered\,
+Anomalies, in parallel\,] \enspace$\rightarrow$\enspace Features \enspace$\rightarrow$\enspace Synthesis\par}
+\vspace{4pt}
+\begin{points}
+  \item Built two guardrails into the specification: a mandatory Risks/Caveats section for every agent,
+    and explicit rules against overclaiming (e.g.\ no MCAR/MAR labels without evidence).
+\end{points}
+
+\subhead{Key findings}
+{\renewcommand{\arraystretch}{1.12}%
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{1.15in}L@{}}
+\lbl{Inventory} & \num{286} stations with data out of a 330-station catalog, across three data tiers
+  (5-min 2024, 5-min 2022--23, hourly 2017--22); 225 (78.7\%) appear in all three.\\\addlinespace[3.5pt]
+\lbl{Missingness} & \num{21,837} station-months audited, \num{91.6\%} complete ($\geq$80\% bin
+  coverage). Peaks in 2017 (13.6\%) and 2022--23 ($\approx$12\%, a data-pipeline transition) show it is
+  operationally driven, not random.\\\addlinespace[3.5pt]
+\lbl{Outage styles} & A station-level classification not in the main paper: always-on 73.4\%,
+  occasional-gap 15.7\%, seasonal-dropout 9.1\%, chronic-sparse 1.8\%.\\\addlinespace[3.5pt]
+\lbl{Trust} & \num{243 of 286} stations (84.9\%) rated HIGH-trust, and 19,963 station-months (96.9\%)
+  trusted. Of 391 anomaly-days, 90.5\% are explained by logged events.\\\addlinespace[3.5pt]
+\lbl{Corridors} & 2,848 valid station pairs (mean $r = 0.573$); \num{27} reference-station candidates
+  pass all five screening criteria.\\\addlinespace[3.5pt]
+\lbl{Modeling readiness} & A 286\,$\times$\,27 station feature table and an 818,645-record clean
+  hourly 2024 dataset.\\
+\end{tabularx}}
+
+\subhead{Limitations and deliverables}
+\begin{points}
+  \item \textit{Limitations, reported by the pipeline itself rather than hidden:} holiday-effect
+    estimates return NaN for all six holidays (a station-ID join mismatch), and $k{=}4$ archetype
+    clustering labels 77 of 78 stations ``Mixed'' (too few features to discriminate).
+  \item \textit{Deliverables:} a 14-page final report, a 14-slide final presentation, a 19-page summary
+    report, a pipeline-design document, and 36 figures.
+\end{points}
+
+% =====================================================================
+% PAGE 2
+% =====================================================================
+\newpage
+% Page 2 has less text than page 1, so its spacing is slightly looser to keep the pages balanced.
+\setlength{\itemgap}{4.5pt}
+\renewcommand{\sectionhead}[1]{%
+  \par\vspace{15pt}%
+  {\headfont\fontsize{12.5}{15}\selectfont\color{navy}#1\par}%
+  \vspace{2.5pt}{\color{rulegray}\hrule height 0.6pt}\vspace{6pt}}
+\renewcommand{\subhead}[1]{%
+  \par\vspace{8pt}%
+  {\labelfont\bfseries\fontsize{10}{12}\selectfont\color{navy}#1\par}\vspace{2.5pt}}
+
+\sectionhead{2\quad Cluster-Pooled Reference-Pool Fallback}
+{\itshape\color{slate}A self-directed learning exercise: not adopted, and never presented as a change to the paper.\par}
+\vspace{1pt}
+
+\subhead{Problem identified}
+The paper's multi-site pipeline requires a reference pool of at least 19 correlated companion-months
+per target station-month. Tracing the code, I found that for April 2024 only \num{84 of 185} eligible
+stations meet this bar. The other \num{101 (55\%)} are dropped silently: the function returns
+\texttt{None}, with no record of which stations failed or why. They skew low-volume and rural, exactly
+the sites a DOT most needs an answer for.
+
+\subhead{Hypothesis and experimental design}
+\textit{Hypothesis:} stations with a similar weekly traffic pattern can supplement a too-small reference pool.
+\begin{points}
+  \item \textit{Profiles:} a 7-value day-of-week vector divided by the station's mean, so clusters
+    reflect pattern, not road size.
+  \item \textit{Clustering:} K-means over $K = 2$--$12$. Silhouette peaks at $K{=}3$ (0.406);
+    Calinski--Harabasz and Davies--Bouldin favor $K{=}4$--$6$. I kept $K{=}3$ by the pre-stated rule and
+    documented the disagreement rather than call it optimal.
+  \item \textit{Integration:} a 0.90 completeness gate leaves 194 stations (clusters of 126 / 12 / 56).
+    The station's own pool is always tried first via the paper's unchanged code; an assertion blocks
+    target-data leakage.
+  \item \textit{Validation:} a non-circular holdout. 20 stations with large pools ($\geq$38) supply
+    ground-truth \kstar; each is shrunk below 19 and re-solved by the fallback and two simpler baselines.
+\end{points}
+
+\subhead{Results and baseline comparison}
+{\renewcommand{\arraystretch}{1.12}%
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{1.55in}L@{}}
+\lbl{Coverage: improved} & \num{84 $\rightarrow$ 95} of 185 eligible stations (45\% $\rightarrow$
+  51\%); 11 stations rescued.\\
+\lbl{Accuracy: not improved} & Higher \kstar\ error than the simplest baseline (table below).\\
+\end{tabularx}}
+
+\vspace{9pt}
+{\centering\fontsize{9.5}{11.5}\selectfont
+\setlength{\tabcolsep}{8pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+{\labelfont\bfseries Method} & {\labelfont\bfseries \textit{n}} & {\labelfont\bfseries MAE (days)} &
+  {\labelfont\bfseries RMSE} & {\labelfont\bfseries Bias} & {\labelfont\bfseries Corr.}\\
+\midrule
+Cluster fallback (this work)      & 100 & 3.48 & 4.85 & $+$0.68 & 0.735\\
+Baseline: same functional class   &  96 & \textbf{2.91} & \textbf{4.30} & $-$1.26 & \textbf{0.818}\\
+Baseline: pool all stations       & 108 & 3.18 & 4.89 & $+$2.10 & 0.787\\
+\bottomrule
+\end{tabular}\par\vspace{2.5pt}
+{\metafont\fontsize{8.25}{10}\selectfont\color{slate}%
+\kstar\ error vs.\ ground truth, 20 holdout stations $\times$ 6 missingness mechanisms
+(\textit{n} = resolved pairs). Best values in bold.}\par}
+\vspace{4pt}
+
+\subhead{Final decision and interpretation}
+\begin{points}
+  \item \textit{Not adopted.} The simplest baseline won. A coverage gain that cannot be shown to
+    preserve accuracy is not yet a contribution; the bar is the same-functional-class baseline, not
+    ``better than nothing.'' Deferred work (other algorithms, sensitivity, stability) is tagged in the run
+    report.
+  \item \textit{Shape normalization is load-bearing,} independent of adoption. Raw-volume clustering
+    agrees with the shape-based one at only \num{ARI\,=\,0.028}: it merely splits the 18 busiest
+    stations from 176 others whose weekly shapes are nearly identical.
+\end{points}
+
+% =====================================================================
+% 3. DIRECTIONS
+% =====================================================================
+\sectionhead{3\quad Research Directions (Documented, Not Yet Tested)}
+\begin{numbered}
+  \item \textit{Mechanism-conditional pooling:} select companions conditional on the missingness
+    mechanism under test.
+  \item \textit{Outage co-occurrence as a negative signal:} reject companions whose outages coincide
+    with the target's.
+  \item \textit{Impute-then-conform:} fill small gaps from behavioral neighbors before the sufficiency test.
+  \item \textit{Outage style as a \kstar\ stratifier:} join the EDA's outage classes to existing \kstar\
+    results.
+  \item \textit{Exchangeability check:} do reference months spanning the 2022--23 transition violate the
+    paper's assumption?
+\end{numbered}
+
+% =====================================================================
+% 4. DEMONSTRATES
+% =====================================================================
+\sectionhead{4\quad What This Work Demonstrates}
+\begin{points}
+  \item \textit{Baselines before claims:} the coverage gain looked like success until the baseline
+    comparison.
+  \item \textit{Reading research code closely:} tracing control flow exposed an undocumented 55\%
+    station loss.
+  \item \textit{Guardrails for AI-assisted analysis:} required caveats made the outputs report their own
+    failures.
+\end{points}
+
+\end{document}

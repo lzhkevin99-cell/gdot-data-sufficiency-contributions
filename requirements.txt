@@ -1,0 +1,15 @@
+# Core: cluster_fallback/ and the EDA agent scripts
+# (versions are the ones the committed outputs were produced and re-verified with)
+numpy>=1.26
+pandas>=2.2
+pyarrow>=16
+matplotlib>=3.9
+scikit-learn>=1.5
+scipy>=1.13
+seaborn>=0.13
+
+# Optional
+geopandas            # cluster map in clustering/interpret.py (skipped gracefully if absent)
+python-pptx          # eda/eda_output/reports/build_pptx_report.py
+fpdf2                # eda/eda_output/reports/build_pdf_report.py, build_summary_report.py, build_ai_usage_report.py
+reportlab            # eda/eda_output/reports/build_speaking_script_pdf.py
